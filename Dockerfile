@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/node
-FROM registry.tce.com/mpaas.scf.demo/node:12-slim
+FROM node:12-slim
 
 # Create and change to the app directory.
 WORKDIR /usr/src/app
@@ -10,8 +10,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install production dependencies.
-RUN npm config set registry http://registry.npm.taobao.org && \
-    npm install --only=production
+RUN npm install --only=production
 
 # Copy local code to the container image.
 COPY . ./
