@@ -10,8 +10,9 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install production dependencies.
-RUN npm install --only=production
-
+RUN npm config set registry https://registry.npmjs.org && \
+    npm install --only=production
+    
 # Copy local code to the container image.
 COPY . ./
 
